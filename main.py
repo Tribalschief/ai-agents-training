@@ -115,7 +115,15 @@ async def run_agent(agent, query):
 
 # Step 9: Main function to test the agents
 async def main():
-        query = input("Enter a query: ")
+    test_queries = [
+        ("research_agent", "What are the latest advancements in AI agents as of June 2025?"),
+        ("weather_agent", "What is the weather in New York today?"),
+        ("research_agent", "How does Gemini 2.0 Flash compare to GPT-4o?"),
+        ("research_agent", "Please research and summarize: AI advancements June 2025. Only return the found links with very minimal text.")
+    ]
+
+    for agent_name, query in test_queries:
+        agent = research_agent if agent_name == "research_agent" else weather_agent
         print(f"\nQuery: {query}")
         response = await run_agent(agent, query)
         print(f"Response: {response}")
